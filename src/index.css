@@ -1,0 +1,79 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+:root {
+  --color-primary: #B91C1C;
+  --color-secondary: #86efac;
+  --color-secondary-dark: #15803d;
+  --color-accent: #111111;
+  --color-background: #F9F9F9;
+  --color-text: #1a1a1a;
+}
+.dark {
+  --color-background: #0f0f0f;
+  --color-text: #f0f0f0;
+}
+/* Global invisible scrollbar — applies to all scrollable elements */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+}
+*:hover::-webkit-scrollbar-thumb {
+  background: rgba(185, 28, 28, 0.15);
+}
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+body:hover::-webkit-scrollbar-thumb {
+  background: rgba(185, 28, 28, 0.2);
+  border-radius: 3px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.border-primary { border-color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.bg-accent { background-color: var(--color-accent); }
+.border-accent { border-color: var(--color-accent); }
+.bg-cream { background-color: var(--color-background); }
+/* Leaflet Map Fixes */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
