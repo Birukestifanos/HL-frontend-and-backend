@@ -223,7 +223,7 @@ export function AboutPage() {
             verification. Visit our Legal & Governance page for details.
           </p>
           <Link
-            to="/legal-governance"
+            to="/advocacy"
             className="inline-block bg-[#86efac] text-[#111111] px-8 py-3 rounded-full font-bold hover:bg-[#22c55e] transition-colors"
           >
             View Legal Info

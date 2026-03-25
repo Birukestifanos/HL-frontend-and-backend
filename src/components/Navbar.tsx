@@ -79,10 +79,6 @@ export function Navbar() {
           path: "/transparency",
         },
         {
-          name: t.nav_financial,
-          path: "/financial-accountability",
-        },
-        {
           name: t.nav_news,
           path: "/news",
         },

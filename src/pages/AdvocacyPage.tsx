@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Megaphone, PenTool, Share2, Users } from "lucide-react";
+import { Megaphone, FileCheck, Shield, BookOpen, Download } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 export function AdvocacyPage() {
   const { t } = useLanguage();
@@ -52,7 +52,6 @@ export function AdvocacyPage() {
             {t.advocacy_subtitle}
           </motion.p>
         </div>
-
         {/* Why Advocacy Matters */}
         <div className="bg-[#B91C1C] text-white rounded-3xl p-12 mb-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pattern-dots" />
@@ -71,7 +70,6 @@ export function AdvocacyPage() {
           </div>
         </div>
 
-        {/* Active Campaigns */}
         <h2 className="font-serif text-3xl font-bold text-[#111111] dark:text-white mb-10 text-center">
           Active Campaigns
         </h2>
@@ -105,32 +103,95 @@ export function AdvocacyPage() {
           ))}
         </div>
 
-        {/* Get Involved */}
-        <div className="text-center">
-          <h2 className="font-serif text-3xl font-bold text-[#111111] dark:text-white mb-10">
-            {t.advocacy_get_involved_title}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <button className="flex flex-col items-center p-6 bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 hover:border-[#B91C1C] dark:hover:border-[#F87171] transition-all group">
-              <PenTool className="h-10 w-10 text-[#B91C1C] dark:text-[#F87171] mb-4 group-hover:scale-110 transition-transform" />
-              <span className="font-bold text-[#111111] dark:text-white">
-                {t.advocacy_sign_petition}
-              </span>
+        {/* Legal Registration & Certificate - from LegalPage */}
+        <h2 className="font-serif text-3xl font-bold  text-[#16df60] dark:text-white mb-10 text-center">
+          Legal Registration & Certificate
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 ">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white dark:bg-[#1a1a1a] p-8 rounded-2xl shadow-sm border border-[#B91C1C]/10 dark:border-[#B91C1C]/20"
+          >
+            <FileCheck className="h-12 w-12 text-[#86efac] mb-6" />
+            <h3 className="font-serif text-xl font-bold text-[#111111] dark:text-white mb-3">
+              NGO Certificate
+            </h3>
+            <p className="text-[#1a1a1a]/70 dark:text-white/70 mb-4">
+              Hibret Lebego is a legally registered NGO. Our registration
+              certificate and legal status are available for verification.
+            </p>
+            <button className="text-[#B91C1C] dark:text-[#F87171] font-semibold flex items-center hover:underline">
+              <Download className="h-4 w-4 mr-2" /> View Certificate
             </button>
-            <button className="flex flex-col items-center p-6 bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 hover:border-[#B91C1C] dark:hover:border-[#F87171] transition-all group">
-              <Share2 className="h-10 w-10 text-[#B91C1C] dark:text-[#F87171] mb-4 group-hover:scale-110 transition-transform" />
-              <span className="font-bold text-[#111111] dark:text-white">
-                {t.advocacy_share}
-              </span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-white dark:bg-[#1a1a1a] p-8 rounded-2xl shadow-sm border border-[#B91C1C]/10 dark:border-[#B91C1C]/20"
+          >
+            <Shield className="h-12 w-12 text-[#86efac] mb-6" />
+            <h3 className="font-serif text-xl font-bold text-[#111111] dark:text-white mb-3">
+              Governance Structure
+            </h3>
+            <p className="text-[#1a1a1a]/70 dark:text-white/70 mb-4">
+              Our governance includes a Board of Directors, executive
+              leadership, and transparent decision-making processes.
+            </p>
+            <button className="text-[#B91C1C] dark:text-[#F87171] font-semibold flex items-center hover:underline">
+              <Download className="h-4 w-4 mr-2" /> View Structure
             </button>
-            <button className="flex flex-col items-center p-6 bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 hover:border-[#B91C1C] dark:hover:border-[#F87171] transition-all group">
-              <Users className="h-10 w-10 text-[#B91C1C] dark:text-[#F87171] mb-4 group-hover:scale-110 transition-transform" />
-              <span className="font-bold text-[#111111] dark:text-white">
-                {t.advocacy_write}
-              </span>
-            </button>
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="bg-white dark:bg-[#1a1a1a] p-8 rounded-2xl shadow-sm border border-[#B91C1C]/10 dark:border-[#B91C1C]/20"
+          >
+            <BookOpen className="h-12 w-12 text-[#86efac] mb-6" />
+            <h3 className="font-serif text-xl font-bold text-[#111111] dark:text-white mb-3">
+              Policies
+            </h3>
+            <p className="text-[#1a1a1a]/70 dark:text-white/70 mb-4">
+              Child safeguarding, PSEA, financial accountability, and other
+              organizational policies are documented and enforced.
+            </p>
+            <a
+              href="/safeguarding"
+              className="text-[#B91C1C] dark:text-[#F87171] font-semibold hover:underline"
+            >
+              View Policies
+            </a>
+          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white dark:bg-[#1a1a1a] p-10 rounded-2xl border border-[#B91C1C]/10 dark:border-[#B91C1C]/20"
+        >
+          <h2 className="font-serif text-2xl font-bold text-[#B91C1C] dark:text-white mb-6">
+            Legal Registration Info
+          </h2>
+          <div className="space-y-4 text-[#1a1a1a]/80 dark:text-white/80">
+            <p>
+              Hibret Lebego is registered as a non-governmental organization in
+              accordance with applicable laws. For verification of our legal
+              status or to request official documentation, please contact us.
+            </p>
+            <p>
+              All financial reports and audit representations (past, current,
+              and future) are available on our Financial Accountability page.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
