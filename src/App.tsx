@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -86,6 +86,24 @@ function ScrollToTop() {
   return null;
 }
 
+// Hide Footer on admin pages
+function FooterWrapper() {
+  const { pathname } = useLocation();
+  const [showFooter, setShowFooter] = useState(true);
+
+  useEffect(() => {
+    // Hide footer on admin routes
+    if (pathname.startsWith("/admin")) {
+      setShowFooter(false);
+    } else {
+      setShowFooter(true);
+    }
+  }, [pathname]);
+
+  if (!showFooter) return null;
+  return <Footer />;
+}
+
 export function App() {
   return (
     <LanguageProvider>
@@ -134,7 +152,7 @@ export function App() {
                   </Routes>
                 </Suspense>
               </main>
-              <Footer />
+              <FooterWrapper />
             </div>
           </Router>
         </AdminAuthProvider>
