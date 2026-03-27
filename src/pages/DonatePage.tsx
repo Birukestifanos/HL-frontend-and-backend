@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import donateImage from "../svg/QR_code.png";
+import donateImage from "../svg/QR_code.jpg";
 
 export function DonatePage() {
   const { t } = useLanguage();
