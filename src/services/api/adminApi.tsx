@@ -1,246 +1,167 @@
 import api from "../axios";
 
-// Types
+// Admin interface
 export interface Admin {
-  id: string;
+  id: number;
   email: string;
   role: "ADMIN" | "SUPER_ADMIN";
   created_at: string;
   updated_at: string;
 }
 
+// Contact interface (from contactApi)
 export interface Contact {
-  id: string;
+  id: number;
   name: string;
-  email: string;
+  email?: string;
   phone?: string;
-  subject: string;
+  phone_number?: string;
+  subject?: string;
   message: string;
-  type: "general" | "volunteer" | "internship" | "partnership";
+  type?:
+    | "general inquiry"
+    | "volunteering"
+    | "donations"
+    | "internship"
+    | "partnership"
+    | "feedback"
+    | "compliant"
+    | "press/media"
+    | "general"
+    | "volunteer"
+    | "donation";
   created_at: string;
 }
 
+// News interface (from newsApi)
 export interface News {
-  id: string;
+  id: number;
   title: string;
   content: string;
+  slug?: string;
+  excerpt?: string;
+  image_url?: string;
+  category?: string;
+  published_at?: string;
+  created_at: string;
+  updated_at?: string;
+}
+
+// Emergency interface (from emergencyApi)
+export interface Emergency {
+  id: number;
+  title: string;
+  location: string;
+  description: string;
+  status: "ACTIVE" | "INACTIVE" | "RESOLVED";
+  is_active?: boolean;
+  affected_count?: number;
+  raised_amount?: number;
+  target_amount?: number;
+  goal_amount?: number;
+  deadline?: string;
+  aid_deployed?: number;
+  aid_unit?: string;
   image_url?: string;
   created_at: string;
-  updated_at: string;
+  updated_at?: string;
 }
 
-export interface Emergency {
-  id: string;
-  title: string;
-  description: string;
-  target_amount?: number;
-  current_amount?: number;
-  deadline?: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
+// Transparency Document interface
 export interface TransparencyDoc {
-  id: string;
+  id: number;
   title: string;
+  description?: string;
   file_url: string;
-  file_type: "annual_report" | "audit_report";
+  file_type: string;
   created_at: string;
 }
 
+// Beneficiary Stats interface
 export interface BeneficiaryStats {
+  id: number;
   total_beneficiaries: number;
-  countries_count: number;
+  countries_count?: number;
+  males: number;
+  females: number;
+  children: number;
+  adults: number;
+  elderly: number;
+  rural: number;
+  urban: number;
+  regions: {
+    region: string;
+    count: number;
+  }[];
+  programs: {
+    program_name: string;
+    beneficiaries: number;
+  }[];
+  created_at: string;
+  updated_at?: string;
 }
 
+// Donation interface
 export interface Donation {
-  id: string;
-  donor_name: string;
-  donor_email: string;
+  id: number;
   amount: number;
   currency: string;
-  status: string;
+  status: "pending" | "completed" | "failed" | "refunded";
+  donor_email: string;
+  donor_name?: string;
   tx_ref: string;
+  payment_method?: string;
   created_at: string;
+  updated_at?: string;
 }
 
+// Donation Stats interface
 export interface DonationStats {
+  id?: number;
   totalAmount: number;
-  totalDonors: number;
+  totalCount: number;
+  totalDonors?: number;
   averageDonation: number;
+  byStatus: {
+    status: string;
+    count: number;
+    total: number;
+  }[];
+  recentDonations: Donation[];
 }
 
-// Admin API
 const adminAPI = {
-  // Admin Management (Super Admin only)
-  getAdmins: async (): Promise<Admin[]> => {
+  // GET /api/v1/admin — protected (ADMIN + SUPER_ADMIN)
+  getAdmins: async () => {
     const response = await api.get("/v1/admin");
-    return response.data.data;
+    return response.data; // { status, result, data: { admins } }
   },
 
-  createAdmin: async (data: {
-    email: string;
-    password: string;
-    role: string;
-  }): Promise<Admin> => {
-    const response = await api.post("/v1/admin", data);
-    return response.data.data;
+  // POST /api/v1/admin — protected (SUPER_ADMIN only)
+  createAdmin: async (
+    email: string,
+    password: string,
+    role?: "ADMIN" | "SUPER_ADMIN",
+  ) => {
+    const response = await api.post("/v1/admin", { email, password, role });
+    return response.data;
   },
 
+  // PUT /api/v1/admin/:id — protected (SUPER_ADMIN only)
   updateAdmin: async (
-    id: string,
-    data: { email?: string; role?: string },
-  ): Promise<Admin> => {
+    id: number,
+    data: { email?: string; role: "ADMIN" | "SUPER_ADMIN" },
+  ) => {
     const response = await api.put(`/v1/admin/${id}`, data);
-    return response.data.data;
+    return response.data;
   },
 
-  deleteAdmin: async (id: string): Promise<void> => {
-    await api.delete(`/v1/admin/${id}`);
-  },
-
-  // Password update
-  updatePassword: async (
-    currentPassword: string,
-    newPassword: string,
-  ): Promise<void> => {
-    await api.put("/v1/admin/password/me", { currentPassword, newPassword });
-  },
-
-  // Contacts
-  getContacts: async (): Promise<Contact[]> => {
-    const response = await api.get("/v1/admin/contacts");
-    return response.data.data;
-  },
-
-  getContact: async (id: string): Promise<Contact> => {
-    const response = await api.get(`/v1/admin/contacts/${id}`);
-    return response.data.data;
-  },
-
-  deleteContact: async (id: string): Promise<void> => {
-    await api.delete(`/v1/admin/contacts/${id}`);
-  },
-
-  // News
-  getNews: async (): Promise<News[]> => {
-    const response = await api.get("/v1/admin/news");
-    return response.data.data;
-  },
-
-  createNews: async (data: {
-    title: string;
-    content: string;
-    image_url?: string;
-  }): Promise<News> => {
-    const response = await api.post("/v1/admin/news", data);
-    return response.data.data;
-  },
-
-  updateNews: async (
-    id: string,
-    data: { title?: string; content?: string; image_url?: string },
-  ): Promise<News> => {
-    const response = await api.put(`/v1/admin/news/${id}`, data);
-    return response.data.data;
-  },
-
-  deleteNews: async (id: string): Promise<void> => {
-    await api.delete(`/v1/admin/news/${id}`);
-  },
-
-  // Emergencies
-  getEmergencies: async (): Promise<Emergency[]> => {
-    const response = await api.get("/v1/admin/emergencies");
-    return response.data.data;
-  },
-
-  createEmergency: async (data: {
-    title: string;
-    description: string;
-    target_amount?: number;
-    deadline?: string;
-  }): Promise<Emergency> => {
-    const response = await api.post("/v1/admin/emergencies", data);
-    return response.data.data;
-  },
-
-  updateEmergency: async (
-    id: string,
-    data: {
-      title?: string;
-      description?: string;
-      target_amount?: number;
-      deadline?: string;
-      is_active?: boolean;
-    },
-  ): Promise<Emergency> => {
-    const response = await api.put(`/v1/admin/emergencies/${id}`, data);
-    return response.data.data;
-  },
-
-  deleteEmergency: async (id: string): Promise<void> => {
-    await api.delete(`/v1/admin/emergencies/${id}`);
-  },
-
-  // Beneficiary Stats
-  getBeneficiaryStats: async (): Promise<BeneficiaryStats> => {
-    const response = await api.get("/v1/admin/beneficiary-stats");
-    return response.data.data;
-  },
-
-  updateBeneficiaryStats: async (data: {
-    total_beneficiaries?: number;
-    countries_count?: number;
-  }): Promise<BeneficiaryStats> => {
-    const response = await api.put("/v1/admin/beneficiary-stats", data);
-    return response.data.data;
-  },
-
-  // Transparency
-  getTransparencyDocs: async (): Promise<TransparencyDoc[]> => {
-    const response = await api.get("/v1/admin/transparency");
-    return response.data.data;
-  },
-
-  uploadTransparencyDoc: async (
-    file: File,
-    title: string,
-    file_type: "annual_report" | "audit_report",
-  ): Promise<TransparencyDoc> => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("title", title);
-    formData.append("file_type", file_type);
-    const response = await api.post("/v1/admin/transparency", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-    return response.data.data;
-  },
-
-  updateTransparencyDoc: async (
-    id: string,
-    data: { title?: string },
-  ): Promise<TransparencyDoc> => {
-    const response = await api.put(`/v1/admin/transparency/${id}`, data);
-    return response.data.data;
-  },
-
-  deleteTransparencyDoc: async (id: string): Promise<void> => {
-    await api.delete(`/v1/admin/transparency/${id}`);
-  },
-
-  // Donations
-  getDonations: async (): Promise<Donation[]> => {
-    const response = await api.get("/v1/admin/donations");
-    return response.data.data;
-  },
-
-  getDonationStats: async (): Promise<DonationStats> => {
-    const response = await api.get("/v1/admin/donations/stats");
-    return response.data.data;
+  // DELETE /api/v1/admin/:id — protected (SUPER_ADMIN only)
+  deleteAdmin: async (id: number) => {
+    const response = await api.delete(`/v1/admin/${id}`);
+    return response.data;
   },
 };
 
+export const { getAdmins, createAdmin, updateAdmin, deleteAdmin } = adminAPI;
 export default adminAPI;

@@ -1,10 +1,8 @@
-// TypeScript declarations for importing image assets and CSS
-
-declare module '*.png';
-declare module '*.jpg';
-declare module '*.jpeg';
-declare module '*.svg';
-declare module '*.css';
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
+declare module "*.svg";
+declare module "*.css";
 
 /// <reference types="vite/client" />
 
