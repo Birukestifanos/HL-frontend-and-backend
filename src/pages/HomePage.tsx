@@ -301,13 +301,13 @@ export function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-black dark:bg-[#1a1a1a] transition-colors duration-300">
+      <section className="py-24 bg-white dark:bg-[#ffffff] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl font-bold text-[#B91C1C] dark:text-white mb-4">
               {t.home_testimonials_title}
             </h2>
-            <p className="text-xl text-[#86efac]/70 dark:text-white/70 max-w-2xl mx-auto">
+            <p className="text-xl text-[#111111]/70 dark:text-white/70 max-w-2xl mx-auto">
               {t.home_testimonials_subtitle}
             </p>
           </div>
@@ -356,7 +356,7 @@ export function HomePage() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="bg-[#e7dfdf] dark:bg-[#2a2a2a] p-8 rounded-2xl border border-[#B91C1C]/10 dark:border-[#B91C1C]/20 relative"
+                className="bg-white dark:bg-[#2a2a2a] p-8 rounded-2xl border border-[#15803d] dark:border-[#B91C1C]/20 relative"
               >
                 <Quote className="h-10 w-10 text-[#B91C1C]/20 dark:text-[#B91C1C]/40 absolute top-6 left-6" />
                 <p className="text-[#1a1a1a]/80 dark:text-white/80 text-lg italic mb-6 relative z-10 pt-4">
@@ -385,18 +385,18 @@ export function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#B91C1C] relative overflow-hidden">
+      <section className="py-24 bg-[#d9fae5] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pattern-dots" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#111111] mb-6">
             {t.home_cta_title}
           </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-[#111111] mb-10 max-w-2xl mx-auto">
             {t.home_cta_text}
           </p>
           <Link
             to="/donate"
-            className="inline-block bg-white text-[#B91C1C] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-block bg-white text-[#B91C1C] px-10 py-4 rounded-full font-bold text-lg hover:bg-[#B91C1C] hover:text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t.home_give_today}
           </Link>

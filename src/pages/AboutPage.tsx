@@ -212,12 +212,13 @@ export function AboutPage() {
       </section>
 
       {/* Legal Registration */}
-      <section className="bg-[#111111] dark:bg-[#050505] text-white py-16 mb-24 transition-colors duration-300">
+      <section className="bg-[#F9F9F9] dark:bg-[#050505] text-white py-6 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-3xl font-bold mb-6 text-[#86efac]">
+          <h1 className="font-serif text-3xl font-bold mb-4 text-[#B91C1C]">
             Legal Registration & Certificate
-          </h2>
-          <p className="text-white/80 max-w-2xl mx-auto mb-8">
+          </h1>
+          <br />
+          <p className="text-black max-w-2xl mx-auto mb-6">
             Hibret Lebego is a legally registered NGO. Our registration
             certificate and compliance documentation are available for
             verification. Visit our Legal & Governance page for details.

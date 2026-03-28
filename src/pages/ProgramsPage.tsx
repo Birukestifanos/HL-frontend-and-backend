@@ -92,7 +92,9 @@ export function ProgramsPage() {
               transition={{
                 duration: 0.6,
               }}
-              className={`flex flex-col ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-12 items-center`}
+              className={`flex flex-col ${
+                index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
+              } gap-12 items-center`}
             >
               {/* Image Side */}
               <div className="w-full lg:w-1/2">
@@ -154,34 +156,54 @@ export function ProgramsPage() {
           ))}
         </div>
 
-        {/* Past Projects & Target Areas */}
+        {/* Target Areas (Beneficiaries) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12"
+          className="mt-24"
         >
           <div className="bg-white dark:bg-[#1a1a1a] p-8 rounded-2xl border border-[#86efac]/30 dark:border-[#86efac]/20">
-            <h3 className="font-serif text-2xl font-bold text-[#111111] dark:text-white mb-4">
-              Past Projects (by Location)
-            </h3>
-            <ul className="space-y-2 text-[#1a1a1a]/80 dark:text-white/80">
-              <li>• Oromia – 15 school builds, 8 water projects</li>
-              <li>• Tigray – Emergency relief, water trucking</li>
-              <li>• SNNPR – Health clinics, maternal care</li>
-              <li>• Amhara – Education & water initiatives</li>
-            </ul>
-          </div>
-          <div className="bg-white dark:bg-[#1a1a1a] p-8 rounded-2xl border border-[#86efac]/30 dark:border-[#86efac]/20">
-            <h3 className="font-serif text-2xl font-bold text-[#111111] dark:text-white mb-4">
+            <h3 className="font-serif text-2xl font-bold text-[#111111] dark:text-white mb-6 text-center">
               Target Areas (Beneficiaries)
             </h3>
-            <ul className="space-y-2 text-[#1a1a1a]/80 dark:text-white/80">
-              <li>• Rural and underserved communities</li>
-              <li>• Children and youth</li>
-              <li>• Women and mothers</li>
-              <li>• Families affected by drought/disaster</li>
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Rural Communities",
+                  desc: "Rural and underserved communities",
+                  icon: "🏡",
+                },
+                {
+                  title: "Children & Youth",
+                  desc: "Children and youth",
+                  icon: "👶",
+                },
+                {
+                  title: "Women & Mothers",
+                  desc: "Women and mothers",
+                  icon: "🤱",
+                },
+                {
+                  title: "Families in Crisis",
+                  desc: "Families affected by drought/disaster",
+                  icon: "❤️",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center p-4 rounded-xl bg-[#F9F9F9] dark:bg-[#0f0f0f] hover:shadow-md transition-shadow"
+                >
+                  <span className="text-4xl mb-3">{item.icon}</span>
+                  <h4 className="font-bold text-[#111111] dark:text-white mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-[#1a1a1a]/70 dark:text-white/70">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

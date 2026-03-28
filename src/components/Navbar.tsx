@@ -35,6 +35,10 @@ export function Navbar() {
       id: "work",
       links: [
         {
+          name: "Past Projects",
+          path: "/past-projects",
+        },
+        {
           name: t.nav_programs,
           path: "/programs",
         },
@@ -51,10 +55,6 @@ export function Navbar() {
         {
           name: t.nav_donate,
           path: "/donate",
-        },
-        {
-          name: t.nav_ways_to_give,
-          path: "/ways-to-give",
         },
         {
           name: t.nav_partner,
@@ -162,7 +162,11 @@ export function Navbar() {
                           <Link
                             key={link.path}
                             to={link.path}
-                            className={`block px-4 py-2 text-sm hover:bg-[#B91C1C]/5 dark:hover:bg-[#B91C1C]/20 hover:text-[#B91C1C] dark:hover:text-[#F87171] transition-colors ${isActive(link.path) ? "text-[#B91C1C] dark:text-[#F87171] font-semibold" : "text-[#1a1a1a]/80 dark:text-white/80"}`}
+                            className={`block px-4 py-2 text-sm hover:bg-[#B91C1C]/5 dark:hover:bg-[#B91C1C]/20 hover:text-[#B91C1C] dark:hover:text-[#F87171] transition-colors ${
+                              isActive(link.path)
+                                ? "text-[#B91C1C] dark:text-[#F87171] font-semibold"
+                                : "text-[#1a1a1a]/80 dark:text-white/80"
+                            }`}
                           >
                             {link.name}
                           </Link>
@@ -176,7 +180,11 @@ export function Navbar() {
 
             <Link
               to="/contact"
-              className={`text-sm font-medium transition-colors hover:text-[#B91C1C] dark:hover:text-[#F87171] ${isActive("/contact") ? "text-[#B91C1C] dark:text-[#F87171] font-semibold" : "text-[#1a1a1a]/80 dark:text-white/80"}`}
+              className={`text-sm font-medium transition-colors hover:text-[#B91C1C] dark:hover:text-[#F87171] ${
+                isActive("/contact")
+                  ? "text-[#B91C1C] dark:text-[#F87171] font-semibold"
+                  : "text-[#1a1a1a]/80 dark:text-white/80"
+              }`}
             >
               {t.nav_contact}
             </Link>
@@ -276,7 +284,11 @@ export function Navbar() {
                       key={link.path}
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`block px-4 py-2 rounded-lg text-base font-medium ${isActive(link.path) ? "bg-[#B91C1C]/5 dark:bg-[#B91C1C]/20 text-[#B91C1C] dark:text-[#F87171]" : "text-[#1a1a1a]/80 dark:text-white/80 hover:bg-[#B91C1C]/5 dark:hover:bg-white/5 hover:text-[#B91C1C] dark:hover:text-[#F87171]"}`}
+                      className={`block px-4 py-2 rounded-lg text-base font-medium ${
+                        isActive(link.path)
+                          ? "bg-[#B91C1C]/5 dark:bg-[#B91C1C]/20 text-[#B91C1C] dark:text-[#F87171]"
+                          : "text-[#1a1a1a]/80 dark:text-white/80 hover:bg-[#B91C1C]/5 dark:hover:bg-white/5 hover:text-[#B91C1C] dark:hover:text-[#F87171]"
+                      }`}
                     >
                       {link.name}
                     </Link>

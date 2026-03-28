@@ -11,6 +11,7 @@ import { AdminGate } from "./components/AdminGate";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { LanguageProvider } from "./context/LanguageContext";
+import { ToastProvider } from "./components/Toast";
 
 // Lazy load all page components for better performance
 const HomePage = lazy(() =>
@@ -41,9 +42,7 @@ const EmergenciesPage = lazy(() =>
     default: m.EmergenciesPage,
   })),
 );
-const WaysToGivePage = lazy(() =>
-  import("./pages/WaysToGivePage").then((m) => ({ default: m.WaysToGivePage })),
-);
+
 const NewsPage = lazy(() =>
   import("./pages/NewsPage").then((m) => ({ default: m.NewsPage })),
 );
@@ -66,6 +65,11 @@ const LegalPage = lazy(() =>
 );
 const ImpactPage = lazy(() =>
   import("./pages/ImpactPage").then((m) => ({ default: m.ImpactPage })),
+);
+const PastProjectsPage = lazy(() =>
+  import("./pages/PastProjectsPage").then((m) => ({
+    default: m.PastProjectsPage,
+  })),
 );
 
 // Loading fallback component
@@ -108,54 +112,62 @@ export function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <AdminAuthProvider>
-          <Router>
-            <ScrollToTop />
-            <div className="flex flex-col min-h-screen bg-[#F9F9F9] dark:bg-[#0f0f0f] font-sans text-[#1a1a1a] dark:text-[#f0f0f0] transition-colors duration-300">
-              <Navbar />
-              <main className="flex-grow pt-20">
-                <Suspense fallback={<PageLoader />}>
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/programs" element={<ProgramsPage />} />
-                    <Route path="/donate" element={<DonatePage />} />
-                    <Route
-                      path="/transparency"
-                      element={<TransparencyPage />}
-                    />
-                    <Route path="/contact" element={<ContactPage />} />
+        <ToastProvider>
+          <AdminAuthProvider>
+            <Router>
+              <ScrollToTop />
+              <div className="flex flex-col min-h-screen bg-[#F9F9F9] dark:bg-[#0f0f0f] font-sans text-[#1a1a1a] dark:text-[#f0f0f0] transition-colors duration-300">
+                <Navbar />
+                <main className="flex-grow pt-20">
+                  <Suspense fallback={<PageLoader />}>
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/about" element={<AboutPage />} />
+                      <Route path="/programs" element={<ProgramsPage />} />
+                      <Route path="/donate" element={<DonatePage />} />
+                      <Route
+                        path="/transparency"
+                        element={<TransparencyPage />}
+                      />
+                      <Route path="/contact" element={<ContactPage />} />
 
-                    {/* New Routes */}
-                    <Route path="/how-we-work" element={<HowWeWorkPage />} />
-                    <Route path="/emergencies" element={<EmergenciesPage />} />
-                    <Route path="/ways-to-give" element={<WaysToGivePage />} />
-                    <Route path="/news" element={<NewsPage />} />
-                    <Route path="/partner" element={<PartnerPage />} />
-                    <Route
-                      path="/financial-accountability"
-                      element={<TransparencyPage />}
-                    />
+                      {/* New Routes */}
+                      <Route path="/how-we-work" element={<HowWeWorkPage />} />
+                      <Route
+                        path="/emergencies"
+                        element={<EmergenciesPage />}
+                      />
+                      <Route path="/news" element={<NewsPage />} />
+                      <Route path="/partner" element={<PartnerPage />} />
+                      <Route
+                        path="/financial-accountability"
+                        element={<TransparencyPage />}
+                      />
 
-                    <Route path="/advocacy" element={<AdvocacyPage />} />
-                    <Route
-                      path="/safeguarding"
-                      element={<SafeguardingPage />}
-                    />
-                    <Route
-                      path="/volunteer-internship"
-                      element={<VolunteerPage />}
-                    />
-                    <Route path="/legal-governance" element={<LegalPage />} />
-                    <Route path="/impact" element={<ImpactPage />} />
-                    <Route path="/admin" element={<AdminGate />} />
-                  </Routes>
-                </Suspense>
-              </main>
-              <FooterWrapper />
-            </div>
-          </Router>
-        </AdminAuthProvider>
+                      <Route path="/advocacy" element={<AdvocacyPage />} />
+                      <Route
+                        path="/safeguarding"
+                        element={<SafeguardingPage />}
+                      />
+                      <Route
+                        path="/volunteer-internship"
+                        element={<VolunteerPage />}
+                      />
+                      <Route path="/legal-governance" element={<LegalPage />} />
+                      <Route path="/impact" element={<ImpactPage />} />
+                      <Route
+                        path="/past-projects"
+                        element={<PastProjectsPage />}
+                      />
+                      <Route path="/admin" element={<AdminGate />} />
+                    </Routes>
+                  </Suspense>
+                </main>
+                <FooterWrapper />
+              </div>
+            </Router>
+          </AdminAuthProvider>
+        </ToastProvider>
       </ThemeProvider>
     </LanguageProvider>
   );

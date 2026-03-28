@@ -128,25 +128,16 @@ export function TransparencyPage() {
               once: true,
             }}
           >
-            <h2 className="font-serif text-3xl font-bold text-[#111111] dark:text-white mb-6">
+            <h2 className="font-serif text-3xl font-bold text-[#B91C1C] dark:text-[#0eca53] mb-6">
               {t.transparency_accountability_title}
             </h2>
-            <p className="text-lg text-[#1a1a1a]/80 dark:text-white/80 mb-6 leading-relaxed">
+            <p className="text-lg text-[#1a1a1a]/80 dark:text-white/80 mb-6 leading-relaxed font-justify">
               {t.transparency_accountability_text_1}
             </p>
-            <p className="text-lg text-[#1a1a1a]/80 dark:text-white/80 mb-8 leading-relaxed">
+            <p className="text-lg text-[#1a1a1a]/80 dark:text-white/80 mb-8 leading-relaxed font-justify">
               {t.transparency_accountability_text_2}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center justify-center px-6 py-3 bg-[#B91C1C]/5 dark:bg-[#B91C1C]/20 text-[#B91C1C] dark:text-[#F87171] font-semibold rounded-lg hover:bg-[#B91C1C]/10 dark:hover:bg-[#B91C1C]/30 transition-colors">
-                <FileText className="mr-2 h-5 w-5" />
-                {t.transparency_report_btn}
-              </button>
-              <button className="flex items-center justify-center px-6 py-3 bg-[#B91C1C]/5 dark:bg-[#B91C1C]/20 text-[#B91C1C] dark:text-[#F87171] font-semibold rounded-lg hover:bg-[#B91C1C]/10 dark:hover:bg-[#B91C1C]/30 transition-colors">
-                <FileText className="mr-2 h-5 w-5" />
-                {t.transparency_financials_btn}
-              </button>
-            </div>
+            <div className="flex flex-col sm:flex-row gap-4"></div>
           </motion.div>
         </div>
 
