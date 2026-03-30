@@ -35,11 +35,7 @@ const donationAPI = {
 
   // GET /api/v1/admin/donations?page=1&limit=10&status=completed — protected
   // Returns paginated donations + summary
-  getAllDonations: async (
-    page: number = 1,
-    limit: number = 10,
-    status?: string,
-  ) => {
+  getAllDonations: async (page: number, limit: number, status?: string) => {
     const params = new URLSearchParams({
       page: page.toString(),
       limit: limit.toString(),

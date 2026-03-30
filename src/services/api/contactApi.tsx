@@ -1,6 +1,5 @@
 import api from "../axios";
 
-// --- Types ---
 interface ContactFormData {
   name: string;
   email?: string;
